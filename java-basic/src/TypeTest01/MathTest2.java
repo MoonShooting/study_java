@@ -1,5 +1,7 @@
 package TypeTest01;
 
+import java.util.Arrays;
+
 public class MathTest2 {
     public static void main(String[] args) {
         //번호 6개 담을 배열 생성
@@ -32,11 +34,9 @@ public class MathTest2 {
 
         for (int i = 0; i < 6; i++) {
             boolean isDiffer;
-
             do {
                 isDiffer = false;
-
-                newVal = (int) (Math.random() * 45 + 1); //44.999...라서 +1을 통해 45의 정수값까지 받기 위함
+                newVal = (int) (Math.random() * 100 + 1); //44.999...라서 +1을 통해 45의 정수값까지 받기 위함
                 for (int j = 0; j < i; j++) {
                     //중복이 있는 경우
                     if (arrRandom[j] == newVal) {
@@ -50,5 +50,71 @@ public class MathTest2 {
             System.out.print(arrRandom[i] + " ");
         }
 
+        //선생님 풀이
+//        int n;
+//        int number[] = new int[6];
+//        out: //for문에 이름을 붙일 수 있다.
+//        for (int i = 0; i < 6; i++) {
+//            n = (int) (Math.random() * 45 + 1); //0.~에서 상수나오도록
+//            for (int j = 0; j < i; j++) { //같은 번호 있는지 확인
+//                if (number[j] == n) { //기본적으로 break 시 가장 가까운 for문 종료함.
+//                    i--;
+//                    continue out; //이름이 붙은 for문인 int i있는 for문으로 올라간다.
+//                    //break;
+//                }
+//            }
+//            //같은 번호가 없으면 배열에 저장하고 출력
+//            number[i] =n;
+//            System.out.print(n + " ");
+//        }
+//        System.out.println();
+
+        System.out.println();
+        //card 100장 중 1~100까지 순서대로 정렬하기
+        //효율적이진 않지만 정석?적인 방법: 교환 정렬
+        //1. 1~100 배열 랜덤 담은 값 사용
+        //2. 1루프 1+1값 비교
+        //3. 높으면 위치 변경 / 안높으면
+        //4. 위치 변경 후 다음 반복 1루프 1+2값 비교
+        //다 돌리면 2루프 2+1값 비교
+
+//        int biggerVal = 0;
+//        for (int i = 0; i <= arrRandom.length - 1; i++) { //-1
+//            for (int j = i + 1; j < arrRandom.length; j++) {
+//                if (arrRandom[i] > arrRandom[j]) {
+//                    //Math.min()써서 대입 가능
+//                    newVal = arrRandom[i];
+//                    arrRandom[i] = arrRandom[j];
+//                    arrRandom[j] = newVal;
+//                }
+//            }
+//        }
+//        for (int j : arrRandom) {
+//            System.out.print(j + " ");
+//        }
+
+        //선생님 풀이
+//        boolean check; //한번에 정렬된 경우 굳이 다 안돌려도 되니까 체크용
+//        for (int i = arrRandom.length - 1; i > 0; i--) {
+//            check = true;
+//            for (int j = 0; j < i; j++) {
+//                if (arrRandom[j] > arrRandom[j+1]) {
+//                    newVal = arrRandom[j];
+//                    arrRandom[j] = arrRandom[j+1];
+//                    arrRandom[j+1] = newVal;
+//                    check = false;
+//                }
+//            }
+//            if (check) break;
+//        }
+//        for (int i : arrRandom) {
+//            System.out.print(i + " ");
+//        }
+
+        //실제 정렬 방법
+        Arrays.sort(arrRandom);
+        for (int i : arrRandom) {
+            System.out.print(i + " ");
+        }
     }
 }
